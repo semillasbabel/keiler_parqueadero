@@ -32,3 +32,27 @@ int obtenerEspacioDisponible() {
 
   return espacioDisponible;
 }
+
+//Funcion para obtener la cantidad de Parqueos desocupados
+int cantDesocupados() {
+  // InitListaParqueos();
+
+  int espacios = 0;
+  int contador = 1;
+  var listadesocupados = <int>[];
+
+  for (var x in listaParqueos) {
+    if (x.ocupado == false) {
+      listadesocupados.add(contador);
+    }
+    contador++;
+  }
+
+  if (listadesocupados.isEmpty) {
+    espacios = 0;
+  } else {
+    espacios = listadesocupados.length;
+  }
+
+  return espacios;
+}
