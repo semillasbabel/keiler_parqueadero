@@ -2,7 +2,7 @@
 
 import 'package:keiler_parqueadero/Models/BD.dart';
 
-void ocuparparqueo(String placa, String modelo, String nombrecliente) {
-  int parqueo = 0;
+void ocuparparqueo(
+    int parqueo, String placa, String modelo, String nombrecliente) {
   listaParqueos[parqueo].ocuparParqueo(placa, modelo, nombrecliente);
 }
