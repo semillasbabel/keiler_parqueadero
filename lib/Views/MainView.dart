@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
 
@@ -27,7 +29,7 @@ class _MainViewState extends State<MainView> {
           RaisedButton(
             child: const Text("Entrada de Auto"),
             onPressed: () {
-              _entradaAuto(context);
+              entradaAuto(context);
             },
           ),
           //--------------------
@@ -36,7 +38,7 @@ class _MainViewState extends State<MainView> {
           RaisedButton(
             child: const Text("Salida de Auto"),
             onPressed: () {
-              _salidaAuto(context);
+              salidaAuto(context);
             },
           ),
           //--------------------
@@ -47,6 +49,14 @@ class _MainViewState extends State<MainView> {
   }
 }
 
-void _salidaAuto(BuildContext context) {}
-
-void _entradaAuto(BuildContext context) {}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void salidaAuto(BuildContext context) {}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void entradaAuto(BuildContext context) {}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void mostrarAviso(BuildContext context) {}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
