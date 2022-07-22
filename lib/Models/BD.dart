@@ -1,6 +1,8 @@
 // ignore_for_file: unused_field, file_names
 
 //Declaración de Variables Globales
+import 'dart:ffi';
+
 bool inicializador = false;
 var listaParqueos = <Parqueos>[];
 
@@ -13,55 +15,11 @@ class Parqueos {
   late DateTime _fechaEntrada;
   late DateTime _fechaSalida;
 
-  //Metodo para crear los objetos de tipo Parqueos y llenar con ellos la lista
-  void creacionParqueos() {
-    if (inicializador == false) {
-      var p1 = Parqueos();
-      var p2 = Parqueos();
-      var p3 = Parqueos();
-      var p4 = Parqueos();
-      var p5 = Parqueos();
-      var p6 = Parqueos();
-      var p7 = Parqueos();
-      var p8 = Parqueos();
-      var p9 = Parqueos();
-      var p10 = Parqueos();
-      var p11 = Parqueos();
-      var p12 = Parqueos();
-      var p13 = Parqueos();
-      var p14 = Parqueos();
-      var p15 = Parqueos();
-      var p16 = Parqueos();
-      var p17 = Parqueos();
-      var p18 = Parqueos();
-      var p19 = Parqueos();
-      var p20 = Parqueos();
-
-      listaParqueos.add(p1);
-      listaParqueos.add(p2);
-      listaParqueos.add(p3);
-      listaParqueos.add(p4);
-      listaParqueos.add(p5);
-      listaParqueos.add(p6);
-      listaParqueos.add(p7);
-      listaParqueos.add(p8);
-      listaParqueos.add(p9);
-      listaParqueos.add(p10);
-      listaParqueos.add(p11);
-      listaParqueos.add(p12);
-      listaParqueos.add(p13);
-      listaParqueos.add(p14);
-      listaParqueos.add(p15);
-      listaParqueos.add(p16);
-      listaParqueos.add(p17);
-      listaParqueos.add(p18);
-      listaParqueos.add(p19);
-      listaParqueos.add(p20);
-      inicializador = true;
-    }
+  //Gets para obtener los datos ya que las variables son privadas
+  bool get ocupado {
+    return _ocupado;
   }
 
-  //Gets para obtener los datos
   String get placa {
     return _placa;
   }
@@ -108,5 +66,53 @@ class Parqueos {
     }
 
     return precio;
+  }
+}
+
+//Función para crear los objetos de tipo Parqueos y llenar con ellos la lista
+void creacionParqueos() {
+  if (inicializador == false) {
+    var p1 = Parqueos();
+    var p2 = Parqueos();
+    var p3 = Parqueos();
+    var p4 = Parqueos();
+    var p5 = Parqueos();
+    var p6 = Parqueos();
+    var p7 = Parqueos();
+    var p8 = Parqueos();
+    var p9 = Parqueos();
+    var p10 = Parqueos();
+    var p11 = Parqueos();
+    var p12 = Parqueos();
+    var p13 = Parqueos();
+    var p14 = Parqueos();
+    var p15 = Parqueos();
+    var p16 = Parqueos();
+    var p17 = Parqueos();
+    var p18 = Parqueos();
+    var p19 = Parqueos();
+    var p20 = Parqueos();
+
+    listaParqueos.add(p1);
+    listaParqueos.add(p2);
+    listaParqueos.add(p3);
+    listaParqueos.add(p4);
+    listaParqueos.add(p5);
+    listaParqueos.add(p6);
+    listaParqueos.add(p7);
+    listaParqueos.add(p8);
+    listaParqueos.add(p9);
+    listaParqueos.add(p10);
+    listaParqueos.add(p11);
+    listaParqueos.add(p12);
+    listaParqueos.add(p13);
+    listaParqueos.add(p14);
+    listaParqueos.add(p15);
+    listaParqueos.add(p16);
+    listaParqueos.add(p17);
+    listaParqueos.add(p18);
+    listaParqueos.add(p19);
+    listaParqueos.add(p20);
+    inicializador = true;
   }
 }

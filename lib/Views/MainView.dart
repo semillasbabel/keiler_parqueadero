@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:keiler_parqueadero/Controller/MainController.dart';
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -51,12 +52,62 @@ class _MainViewState extends State<MainView> {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-void salidaAuto(BuildContext context) {}
+void entradaAuto(BuildContext context) {
+  //Inicialización de la lista de Objetos Parqueos
+  iniciarDatosController();
+  // Validación si hay campos disponibles para agregar un nuevo auto
+  if (disponibilidadController() == 0) {
+    //Mensaje en caso que no hayan mas espacios disponibles
+    mostrarAviso(context, "¡No hay mas espacios disponibles!");
+  } else {
+    //Navegación a la ventana AddCar
+    Navigator.pushNamed(context, "AddCar");
+  }
+}
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-void entradaAuto(BuildContext context) {}
+void salidaAuto(BuildContext context) {
+  //Inicialización de la lista de Objetos Parqueos
+  iniciarDatosController();
+  //Validación si existe algún auto en el parqueo
+  if (disponibilidadController() == 20) {
+    mostrarAviso(
+        context, "No hay ningun auto en el parqueo, espere a que ingrese uno");
+  } else {
+    // Navegación hacia la pagina DeleteCar
+    llenarlistOcupadosController();
+    Navigator.pushNamed(context, "DeleteCar");
+  }
+}
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-void mostrarAviso(BuildContext context) {}
+void mostrarAviso(BuildContext context, String info) {
+  //AlertDialog en caso que no se encuentre ningún auto en el parqueo
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("¡Información!"),
+          content: Text(info),
+          actions: [
+            //----------------------------------
+            //Buton OK para salir del AlertDialog
+            FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("OK"))
+            //----------------------------------
+          ],
+          // Codigo para darle border redondos al cuadro del AlertDialog
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        );
+      },
+      //Ocultar el dialogo al precionar fuera de el
+      barrierDismissible: true);
+}
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------

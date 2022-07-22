@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:keiler_parqueadero/Views/AddCarView.dart';
+import 'package:keiler_parqueadero/Views/DeleteCarView.dart';
 import 'package:keiler_parqueadero/Views/MainView.dart';
 
 void main() => runApp(MyApp());
@@ -13,6 +15,8 @@ class MyApp extends StatelessWidget {
         initialRoute: "MainView",
         routes: {
           "MainView": (BuildContext context) => const MainView(),
+          "AddCar": (BuildContext context) => const AddCarView(),
+          "DeleteCar": (BuildContext context) => const DeleteCarView(),
         });
   }
 }
