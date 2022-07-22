@@ -15,3 +15,20 @@ bool validarExistenciaPlaca(String placa) {
 
   return continuar;
 }
+
+//Función para obtener el primer espacio disponible
+int obtenerEspacioDisponible() {
+  int espacioDisponible = 0;
+  int contador = 1;
+
+  for (var x in listaParqueos) {
+    if (x.ocupado == false) {
+      if (espacioDisponible == 0) {
+        espacioDisponible = contador;
+      }
+    }
+    contador++;
+  }
+
+  return espacioDisponible;
+}
