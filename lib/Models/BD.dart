@@ -1,6 +1,8 @@
 // ignore_for_file: unused_field, file_names
 
 //Declaración de Variables Globales
+import 'dart:ffi';
+
 bool inicializador = false;
 var listaParqueos = <Parqueos>[];
 
@@ -62,6 +64,10 @@ class Parqueos {
   }
 
   //Gets para obtener los datos
+  bool get ocupado {
+    return _ocupado;
+  }
+
   String get placa {
     return _placa;
   }
