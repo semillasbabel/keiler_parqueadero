@@ -8,6 +8,11 @@ var listaOcupados = <String>[];
 var mapaOcupados = {};
 var ListaInfoCliente = <String>["", ""];
 
+//Función para crear los objetos de parqueo y llenar la lista con los objetos creados
+void crearLlenarObjetos() {
+  creacionParqueos();
+}
+
 //Función para validar si la placa ya fue anteriormente ingresada
 bool validarExistenciaPlaca(String placa) {
   bool continuar = true;

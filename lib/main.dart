@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
         initialRoute: "MainView",
         routes: {
           "MainView": (BuildContext context) => const MainView(),
+          "AddCar": (BuildContext context) => const AddCar(),
+          "DeleteCar": (BuildContext context) => const DeleteCar(),
         });
   }
 }

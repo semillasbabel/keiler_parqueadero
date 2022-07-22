@@ -1,0 +1,117 @@
+// ignore_for_file: file_names, deprecated_member_use
+
+import 'package:flutter/material.dart';
+
+class AddCarView extends StatefulWidget {
+  const AddCarView({Key? key}) : super(key: key);
+
+  @override
+  State<AddCarView> createState() => _AddCarViewState();
+}
+
+class _AddCarViewState extends State<AddCarView> {
+  String placaAuto = "";
+  String modeloAuto = "";
+  String nombreCliente = "";
+
+  final llaveformulario = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        //----------------------------------------
+        appBar: AppBar(
+          backgroundColor: Colors.blue.shade900,
+          title: const Text("ENTRADA"),
+          centerTitle: true,
+        ),
+        //----------------------------------------
+        body: Padding(
+          padding: const EdgeInsets.all(50.0),
+          child: Form(
+            key: llaveformulario,
+            child: Column(
+              children: [
+                //.....................................
+                //Campo del texto que contendra la placa ingresada
+                TextFormField(
+                  decoration: const InputDecoration(labelText: "Placa"),
+                  onSaved: (value) {
+                    placaAuto = value!;
+                  },
+                  //Función para validar que el campo no se encuentre vació
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Llene este campo";
+                    }
+                  },
+                ),
+                //.....................................
+                //Campo de texto que contendra el modelo ingresado
+                TextFormField(
+                  decoration: const InputDecoration(labelText: "Modelo"),
+                  onSaved: (value) {
+                    modeloAuto = value!;
+                  },
+                  //Función para validar que el campo no se encuentre vació
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Llene este campo";
+                    }
+                  },
+                ),
+                //.....................................
+                //Campo de texto que contendra el nombre del cliente ingresado
+                TextFormField(
+                  decoration:
+                      const InputDecoration(labelText: "Nombre Cliente"),
+                  onSaved: (value) {
+                    nombreCliente = value!;
+                  },
+                  //Función para validar que el campo no se encuentre vació
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Llene este campo";
+                    }
+                  },
+                ),
+                //.....................................
+                //Boton añadir nuevo auto
+                RaisedButton(
+                  child: const Text("Añadir Auto"),
+                  onPressed: () {
+                    //Llamamos a la función _addCar para realizar las validaciones correspondientes
+                    _btnaddcar(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+        )
+        //----------------------------------------
+        );
+  }
+
+  void _btnaddcar(BuildContext context) {
+    //Validación echa desde el validator en el boton
+    if (llaveformulario.currentState!.validate()) {
+      llaveformulario.currentState!.save();
+      //------------------------------------------------------
+      //Validamos que la placa ya haya sido ingresada
+      if (ValiPlacaController(placaAuto) == true) {
+        //-------------------------------
+        //Validamos que hayan campos disponibles
+        if (DisponibilidadController() == 0) {
+          MostrarDialogo(context, "Ya no existen mas campos disponibles");
+        } else {
+          NuevoAutoController(placaAuto, modeloAuto, nombreCliente);
+          Navigator.pushNamed(context, "MainView");
+        }
+        //-------------------------------
+      } else {
+        MostrarDialogo(context, "La placa ingresada ya se encuntra registrada");
+      }
+      //------------------------------------------------------
+    }
+  }
+}
