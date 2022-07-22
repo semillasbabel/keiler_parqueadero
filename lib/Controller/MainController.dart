@@ -24,26 +24,26 @@ void nuevoAutoController(String datplaca, String datmodelo, String datpersona) {
 
 //Función para obtener una lista de los parqueos ocupados
 List listaOcupadosController() {
-  return ListaOcupados;
+  return listaOcupados;
 }
 
 void llenarlistOcupadosController() {
-  LlenarListaOcupados();
+  llenarListaOcupados();
 }
 
 //Función para obtener el precio por parqueo del auto seleccionado
-int obtPrecioAutoController(String llave) {
-  return ObtPrecio(llave);
+int obtPrecioAutoController(String placa) {
+  return obtenerPrecioParqueo(placa);
 }
 
 //Función para obtener el nombre del cliente y el modelo del auto seleccionado
-List infoClienteController(String llave) {
-  return InfoCliente(llave);
+List infoClienteController(String placa) {
+  return obtenerInfoCliente(placa);
 }
 
 //Función para realizar el pago del parqueo y desocupar el espacio de parqueo
-void parqueoPagadoController(String llave) {
-  Desocuparparqueo(llave);
+void parqueoPagadoController(String placa) {
+  SalidaAuto(placa);
 }
 
 //-------------------------------------------------------------------
