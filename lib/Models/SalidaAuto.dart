@@ -2,7 +2,6 @@
 
 import 'package:keiler_parqueadero/Models/BD.dart';
 
-void ocuparparqueo(
-    int parqueo, String placa, String modelo, String nombrecliente) {
+void ocuparparqueo(int parqueo) {
   listaParqueos[parqueo].desocuparParqueo();
 }

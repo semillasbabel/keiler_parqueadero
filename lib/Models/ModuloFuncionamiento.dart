@@ -1,7 +1,12 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 //Función para validar si la placa ya existe
 import 'package:keiler_parqueadero/Models/BD.dart';
+
+//Declaración de Variables Gobales
+var listaOcupados = <String>[];
+var mapaOcupados = {};
+var ListaInfoCliente = <String>["", ""];
 
 //Función para validar si la placa ya fue anteriormente ingresada
 bool validarExistenciaPlaca(String placa) {
@@ -55,4 +60,20 @@ int cantDesocupados() {
   }
 
   return espacios;
+}
+
+//Función para inicializar y llenar la listaOcupados
+void llenarListaOcupados() {
+  listaOcupados.clear();
+  mapaOcupados.forEach((key, value) {
+    listaOcupados.add(key);
+  });
+}
+
+//Función para obtener la información del cliente a la hora de cobrar
+List obtenerInfoCliente(String placa) {
+  int Parqueo = int.parse(mapaOcupados[placa]);
+  ListaInfoCliente[0] = listaParqueos[Parqueo].nombre;
+  ListaInfoCliente[1] = listaParqueos[Parqueo].modelo;
+  return ListaInfoCliente;
 }
