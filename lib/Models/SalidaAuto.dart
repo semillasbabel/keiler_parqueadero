@@ -3,7 +3,7 @@
 import 'package:keiler_parqueadero/Models/BD.dart';
 import 'package:keiler_parqueadero/Models/ModuloFuncionamiento.dart';
 
-void ocuparparqueo(int parqueo, String placa) {
+void liberarparqueo(int parqueo, String placa) {
   listaParqueos[parqueo].desocuparParqueo();
   mapaOcupados.remove(placa);
   print("El parqueo #$parqueo fue desocupado");
