@@ -63,7 +63,7 @@ class Parqueos {
     }
   }
 
-  //Gets para obtener los datos
+  //Gets para obtener los datos ya que las variables son privadas
   bool get ocupado {
     return _ocupado;
   }
