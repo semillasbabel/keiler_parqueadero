@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:keiler_parqueadero/Controller/MainController.dart';
 
 class AddCarView extends StatefulWidget {
   const AddCarView({Key? key}) : super(key: key);
@@ -98,20 +99,47 @@ class _AddCarViewState extends State<AddCarView> {
       llaveformulario.currentState!.save();
       //------------------------------------------------------
       //Validamos que la placa ya haya sido ingresada
-      if (ValiPlacaController(placaAuto) == true) {
+      if (valiPlacaController(placaAuto) == true) {
         //-------------------------------
         //Validamos que hayan campos disponibles
-        if (DisponibilidadController() == 0) {
-          MostrarDialogo(context, "Ya no existen mas campos disponibles");
+        if (disponibilidadController() == 0) {
+          mostrarAviso(context, "Ya no existen mas campos disponibles");
         } else {
-          NuevoAutoController(placaAuto, modeloAuto, nombreCliente);
+          nuevoAutoController(placaAuto, modeloAuto, nombreCliente);
           Navigator.pushNamed(context, "MainView");
         }
         //-------------------------------
       } else {
-        MostrarDialogo(context, "La placa ingresada ya se encuntra registrada");
+        mostrarAviso(context, "La placa ingresada ya se encuntra registrada");
       }
       //------------------------------------------------------
     }
+  }
+
+  void mostrarAviso(BuildContext context, String info) {
+    //AlertDialog en caso que no se encuentre ningún auto en el parqueo
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("¡Información!"),
+            content: Text(info),
+            actions: [
+              //----------------------------------
+              //Buton OK para salir del AlertDialog
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("OK"))
+              //----------------------------------
+            ],
+            // Codigo para darle border redondos al cuadro del AlertDialog
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          );
+        },
+        //Ocultar el dialogo al precionar fuera de el
+        barrierDismissible: true);
   }
 }
