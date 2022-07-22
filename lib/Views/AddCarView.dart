@@ -106,7 +106,7 @@ class _AddCarViewState extends State<AddCarView> {
           mostrarAviso(context, "Ya no existen mas campos disponibles");
         } else {
           nuevoAutoController(placaAuto, modeloAuto, nombreCliente);
-          Navigator.pushNamed(context, "MainView");
+          // Navigator.pushNamed(context, "MainView");
         }
         //-------------------------------
       } else {

@@ -9,6 +9,7 @@ import 'package:keiler_parqueadero/Models/SalidaAuto.dart';
 var listaOcupados = <String>[];
 var mapaOcupados = {};
 var ListaInfoCliente = <String>["", ""];
+int espacioDisponible = 0;
 
 //-------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------
@@ -27,12 +28,12 @@ void EntradaAuto(String datplaca, String datmodelo, String datpersona) {
 
 //
 void SalidaAuto(String placa) {
-  liberarparqueo(int.parse(mapaOcupados[placa]), placa);
+  liberarparqueo(mapaOcupados[placa], placa);
 }
 
 //Función para obtener el precio del parqueo por medio de la placa seleccionada por la persona
 int obtenerPrecioParqueo(String placa) {
-  return listaParqueos[int.parse(mapaOcupados[placa])].obtenerPrecio();
+  return listaParqueos[mapaOcupados[placa]].obtenerPrecio();
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -56,8 +57,8 @@ bool validarExistenciaPlaca(String placa) {
 
 //Función para obtener el primer espacio disponible
 int obtenerEspacioDisponible() {
-  int espacioDisponible = 0;
-  int contador = 0;
+  espacioDisponible = 0;
+  int contador = 1;
 
   for (var x in listaParqueos) {
     if (!x.ocupado) {
@@ -105,7 +106,7 @@ void llenarListaOcupados() {
 
 //Función para obtener la información del cliente a la hora de cobrar
 List obtenerInfoCliente(String placa) {
-  ListaInfoCliente[0] = listaParqueos[int.parse(mapaOcupados[placa])].nombre;
-  ListaInfoCliente[1] = listaParqueos[int.parse(mapaOcupados[placa])].modelo;
+  ListaInfoCliente[0] = listaParqueos[mapaOcupados[placa]].nombre;
+  ListaInfoCliente[1] = listaParqueos[mapaOcupados[placa]].modelo;
   return ListaInfoCliente;
 }
