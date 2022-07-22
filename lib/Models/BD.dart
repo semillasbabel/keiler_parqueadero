@@ -61,6 +61,19 @@ class Parqueos {
     }
   }
 
+  //Gets para obtener los datos
+  String get placa {
+    return _placa;
+  }
+
+  String get modelo {
+    return _modelo;
+  }
+
+  String get nombre {
+    return _nombreCliente;
+  }
+
   //Metodo para ocupar los parqueos
   void ocuparParqueo(
       String datplaca, String datmodelo, String datnombreCliente) {
