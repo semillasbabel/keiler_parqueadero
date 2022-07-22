@@ -2,16 +2,35 @@
 
 //Función para validar si la placa ya existe
 import 'package:keiler_parqueadero/Models/BD.dart';
+import 'package:keiler_parqueadero/Models/IngresoAuto.dart';
 
 //Declaración de Variables Gobales
 var listaOcupados = <String>[];
 var mapaOcupados = {};
 var ListaInfoCliente = <String>["", ""];
 
+//-------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
+//                                  FUNCIONES PRINCIPALES
+//-------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
 //Función para crear los objetos de parqueo y llenar la lista con los objetos creados
-void crearLlenarObjetos() {
+void iniciarBD() {
   creacionParqueos();
 }
+
+//Función para ocupar un nuevo parqueo
+void EntradaAuto(String datplaca, String datmodelo, String datpersona) {
+  ocuparparqueo(obtenerEspacioDisponible(), datplaca, datmodelo, datpersona);
+}
+
+void SalidaAuto() {}
+
+//-------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
+//                                  FUNCIONES SECUNDARIAS
+//-------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
 
 //Función para validar si la placa ya fue anteriormente ingresada
 bool validarExistenciaPlaca(String placa) {
@@ -32,7 +51,7 @@ int obtenerEspacioDisponible() {
   int contador = 1;
 
   for (var x in listaParqueos) {
-    if (x.ocupado == false) {
+    if (!x.ocupado) {
       if (espacioDisponible == 0) {
         espacioDisponible = contador;
       }
@@ -52,7 +71,7 @@ int cantDesocupados() {
   var listadesocupados = <int>[];
 
   for (var x in listaParqueos) {
-    if (x.ocupado == false) {
+    if (!x.ocupado) {
       listadesocupados.add(contador);
     }
     contador++;
