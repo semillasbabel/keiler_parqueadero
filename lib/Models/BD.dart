@@ -1,8 +1,5 @@
 // ignore_for_file: unused_field, file_names
 
-//Declaración de Variables Globales
-import 'dart:ffi';
-
 bool inicializador = false;
 var listaParqueos = <Parqueos>[];
 
