@@ -3,7 +3,7 @@ import 'package:keiler_parqueadero/Views/AddCarView.dart';
 import 'package:keiler_parqueadero/Views/DeleteCarView.dart';
 import 'package:keiler_parqueadero/Views/MainView.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

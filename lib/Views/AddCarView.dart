@@ -107,7 +107,7 @@ class _AddCarViewState extends State<AddCarView> {
         } else {
           //Añadimos un nuevo auto
           nuevoAutoController(placaAuto, modeloAuto, nombreCliente);
-          Navigator.pop(context, "MainView");
+          // Navigator.pop(context, "MainView");
         }
         //-------------------------------
       } else {

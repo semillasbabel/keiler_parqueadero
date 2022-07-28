@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:keiler_parqueadero/Controller/MainController.dart';
+import 'package:keiler_parqueadero/Models/ModuloFuncionamiento.dart';
 
 //Declaración de variables globales
 String llaveDelete = "";
@@ -54,7 +55,7 @@ class _DeleteCarViewState extends State<DeleteCarView> {
     //Una vez seleccionado el auto llamamos a la función mostrarDialogo
     //con la información del cliente y el monto a pagar el cual se envia mediante el parametro info.
     String info =
-        "El cliente: ${informacion[1]} con el auto modelo: ${informacion[0]} placa: $placa debe pagar un total de \$$precio";
+        "El cliente: ${informacion[0]} con el auto modelo: ${informacion[1]} placa: $placa debe pagar un total de \$$precio";
     mostrarDialogo(context, info);
   }
 
@@ -69,6 +70,7 @@ class _DeleteCarViewState extends State<DeleteCarView> {
               FlatButton(
                   onPressed: () {
                     pagado(context);
+                    Navigator.pop(context);
                   },
                   child: const Text("PAGADO")),
               FlatButton(
@@ -89,7 +91,8 @@ class _DeleteCarViewState extends State<DeleteCarView> {
     setState(() {
       //Mandamos a llamar a la función que liberara el espacio de parqueo
       parqueoPagadoController(llaveDelete);
-      Navigator.pushNamed(context, "MainView");
+      listaOcupados.remove(llaveDelete);
+      // Navigator.pushNamed(context, "MainView");
     });
   }
 }
